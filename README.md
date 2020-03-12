@@ -14,6 +14,9 @@
 
 *These tools are free to use.*
 
+## Database
+docker pull mcr.microsoft.com/mssql/server
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Passw0rd' -p 1434:1434 -d mcr.microsoft.com/mssql/server
 
 ```
 dotnet restore
