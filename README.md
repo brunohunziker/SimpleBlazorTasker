@@ -1,6 +1,4 @@
-The SimpleBlazorTasker project contains the APIs, database, and other core infrastructure items needed for the "backend" of all bitwarden client applications.
-
-The code is written in C# using .NET Core with ASP.NET Core. The codebase can be developed, built, run, and deployed cross-platform on Windows, macOS, and Linux distributions.
+The SimpleBlazorTasker is written in C# using .NET Core with ASP.NET Core. The codebase can be developed, built, run, and deployed cross-platform on Windows, macOS, and Linux distributions.
 
 ## Build/Run
 
