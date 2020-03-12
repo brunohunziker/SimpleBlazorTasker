@@ -15,8 +15,10 @@
 *These tools are free to use.*
 
 ## Database
+```
 docker pull mcr.microsoft.com/mssql/server
-docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Passw0rd' -p 1434:1434 -d mcr.microsoft.com/mssql/server
+docker run --name database -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Passw0rd' -p 1434:1434 -d mcr.microsoft.com/mssql/server
+```
 
 ```
 dotnet restore
@@ -47,7 +49,7 @@ docker image build -t simpleblazortasker
 ### Run Docker Image
 
 ```
-docker run -d -p 8080:80 --name simpleblazortasker simpleblazortasker
+docker run -d -p 8080:80 --link database --name simpleblazortasker simpleblazortasker
 ```
 
 visit http://localhost:8080
