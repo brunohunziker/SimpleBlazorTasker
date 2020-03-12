@@ -16,7 +16,6 @@ The SimpleBlazorTasker is written in C# using .NET Core with ASP.NET Core. The c
 
 *These tools are free to use.*
 
-### API
 
 ```
 dotnet restore
