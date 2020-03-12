@@ -2,27 +2,27 @@
 
 @inherits IndexBase
 
-@if (VM.Todos != null)
+@if (VM.Todos == null)
 {
-
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Your new todo:</span>
-        </div>
-        @*<textarea class="form-control" aria-label="With textarea" @bind="@VM.NewTodo"></textarea>*@
-        <input type="text" class="form-control" aria-describedby="basic-addon1" @bind="@VM.NewTodo">
-        <button @onclick="VM.Create" type="button" class="btn btn-primary">Save</button>
+  <LoadingBox DisplayMessage="Loading Kanzleien" />
+}
+else
+{
+  <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Your new todo:</span>
       </div>
+      @*<textarea class="form-control" aria-label="With textarea" @bind="@VM.NewTodo"></textarea>*@
+      <input type="text" class="form-control" aria-describedby="basic-addon1" @bind="@VM.NewTodo">
+      <button @onclick="VM.Create" type="button" class="btn btn-primary">Save</button>
+    </div>
 
-      <ul class="list-group">
-        @foreach (var todo in VM.Todos)
-        {
-          <li class="list-group-item">
-            <input type="checkbox" @bind="todo.IsDone" />&nbsp;&nbsp;<em>@todo.Title</em>
-          </li>
-        }
-      </ul>
-
-
+    <ul class="list-group">
+      @foreach (var todo in VM.Todos)
+      {
+        <li class="list-group-item">
+          <input type="checkbox" @bind="todo.IsDone" />&nbsp;&nbsp;<b><em>@todo.Title</em></b>
+        </li>
+      }
+    </ul>
 }

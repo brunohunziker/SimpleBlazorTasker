@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using SimpleBlazorTasker.ViewModels;
 
 namespace SimpleBlazorTasker.Pages
 {
   public class IndexBase : BasePage<TodosViewModel>
   {
+    protected override async Task OnInitializedAsync()
+    {
+      await VM.Load();
+    }
   }
 }

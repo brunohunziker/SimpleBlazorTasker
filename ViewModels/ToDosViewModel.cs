@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using SimpleBlazorTasker.Entities;
 
 namespace SimpleBlazorTasker.ViewModels
 {
   public class TodosViewModel
   {
-    public TodosViewModel()
+    private readonly TaskerDbContext _dbContext;
+
+    public TodosViewModel(TaskerDbContext dbContext)
     {
-      Todos = new List<TodoItem>
-      {
-        new TodoItem { Title = "Clean the windows"},
-        new TodoItem { Title = "Pay the bills"},
-        new TodoItem { Title = "Buy beer"}
-      };
+      _dbContext = dbContext;
+      Todos = _dbContext.TodoItems.ToList();
     }
 
     public List<TodoItem> Todos { get; set; }
@@ -21,11 +22,18 @@ namespace SimpleBlazorTasker.ViewModels
 
     public void Create()
     {
-      if (!string.IsNullOrWhiteSpace(NewTodo))
-      {
-        Todos.Add(new TodoItem { Title = NewTodo });
-        NewTodo = string.Empty;
-      }
+      if (string.IsNullOrWhiteSpace(NewTodo)) return;
+
+      _dbContext.TodoItems.Add(new TodoItem { Title = NewTodo });
+      _dbContext.SaveChanges();
+      Todos = _dbContext.TodoItems.ToList();
+
+      NewTodo = string.Empty;
+    }
+
+    public async Task Load()
+    {
+      Todos = await _dbContext.TodoItems.ToListAsync();
     }
   }
 }
