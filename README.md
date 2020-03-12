@@ -50,6 +50,7 @@ docker image build -t simpleblazortasker
 docker run -d -p 8080:80 --name simpleblazortasker simpleblazortasker
 ```
 
+visit http://localhost:8080
 
 ## Contribute
 
