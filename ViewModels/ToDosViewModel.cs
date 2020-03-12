@@ -7,14 +7,25 @@ namespace SimpleBlazorTasker.ViewModels
   {
     public TodosViewModel()
     {
-      ToDos = new[] 
+      Todos = new List<TodoItem>
       {
-        new Todo { Content = "Clean the windows"},
-        new Todo { Content = "Pay the bills"},
-        new Todo { Content = "Buy beer"}
+        new TodoItem { Title = "Clean the windows"},
+        new TodoItem { Title = "Pay the bills"},
+        new TodoItem { Title = "Buy beer"}
       };
     }
 
-    public IEnumerable<Todo> ToDos { get; set; }
+    public List<TodoItem> Todos { get; set; }
+
+    public string NewTodo { get; set; }
+
+    public void Create()
+    {
+      if (!string.IsNullOrWhiteSpace(NewTodo))
+      {
+        Todos.Add(new TodoItem { Title = NewTodo });
+        NewTodo = string.Empty;
+      }
+    }
   }
 }

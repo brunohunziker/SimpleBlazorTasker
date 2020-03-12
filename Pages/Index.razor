@@ -2,14 +2,27 @@
 
 @inherits IndexBase
 
-@if (VM.ToDos != null)
+@if (VM.Todos != null)
 {
-  @foreach (var todo in VM.ToDos)
-  {
-    <div class="alert alert-warning" role="alert">
-      <p><em>@todo.Content</em></p>
-    </div>
-    
-    <br />
-  }
+
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Your new todo:</span>
+        </div>
+        @*<textarea class="form-control" aria-label="With textarea" @bind="@VM.NewTodo"></textarea>*@
+        <input type="text" class="form-control" aria-describedby="basic-addon1" @bind="@VM.NewTodo">
+        <button @onclick="VM.Create" type="button" class="btn btn-primary">Save</button>
+      </div>
+
+      <ul class="list-group">
+        @foreach (var todo in VM.Todos)
+        {
+          <li class="list-group-item">
+            <input type="checkbox" @bind="todo.IsDone" />&nbsp;&nbsp;<em>@todo.Title</em>
+          </li>
+        }
+      </ul>
+
+
 }
