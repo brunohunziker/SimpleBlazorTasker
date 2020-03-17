@@ -49,7 +49,7 @@ docker image build -t simpleblazortasker .
 ### Run Docker Image
 
 ```
-docker network create isolated_network
+docker network create mynetwork
 docker run -d -p 8080:80 --name simpleblazortasker --network=mynetwork simpleblazortasker
 ```
 
