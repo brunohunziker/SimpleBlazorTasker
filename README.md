@@ -17,7 +17,7 @@
 ## Database
 ```
 docker pull mcr.microsoft.com/mssql/server
-docker run --name mydatabase --network=mynetwork -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Passw0rd' -p 1434:1433 -d mcr.microsoft.com/mssql/server
+docker run --name mysqlserver --network=mynetwork -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Passw0rd' -p 1434:1433 -d mcr.microsoft.com/mssql/server
 ```
 
 ```
@@ -50,7 +50,7 @@ docker image build -t simpleblazortasker .
 
 ```
 docker network create mynetwork
-docker run -d -p 8080:80 --name simpleblazortasker --network=mynetwork simpleblazortasker
+docker run -d -p 8080:80 --name simpleblazortasker --network=mynetwork --link mysqlserver simpleblazortasker
 ```
 
 visit http://localhost:8080
