@@ -14,20 +14,6 @@
 
 *These tools are free to use.*
 
-## Database
-```
-docker pull mcr.microsoft.com/mssql/server
-docker run --name mydatabase -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Passw0rd' -p 1434:1434 -d mcr.microsoft.com/mssql/server
-```
-
-```
-dotnet restore
-dotnet build
-dotnet run
-```
-
-visit http://localhost:5000
-
 ## Deploy
 
 You can deploy SimpleBlazorTasker using Docker containers on Windows, macOS, and Linux distributions. 
@@ -39,17 +25,11 @@ You can deploy SimpleBlazorTasker using Docker containers on Windows, macOS, and
 
 *These dependencies are free to use.*
 
-### Build Docker Image
+### Build & Run Docker Images
 
 ```
-docker image build -t simpleblazortasker
-```
-
-
-### Run Docker Image
-
-```
-docker run -d -p 8080:80 --name simpleblazortasker simpleblazortasker
+docker-compose build
+docker-compose up
 ```
 
 visit http://localhost:8080
