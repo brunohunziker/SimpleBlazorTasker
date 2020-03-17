@@ -42,7 +42,7 @@ You can deploy SimpleBlazorTasker using Docker containers on Windows, macOS, and
 ### Build Docker Image
 
 ```
-docker image build -t simpleblazortasker
+docker image build -t simpleblazortasker .
 ```
 
 
