@@ -27,7 +27,7 @@ namespace SimpleBlazorTasker
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddDbContext<TaskerDbContext>(options =>
-        options.UseSqlServer($"Data Source=myxdatabase,1434;Initial Catalog=Tasker;User Id=sa;Password=Passw0rd"));
+        options.UseSqlServer($"Data Source=db;Initial Catalog=Tasker;User Id=sa;Password=Passw0rd"));
       services.AddRazorPages();
       services.AddServerSideBlazor();
       services.AddScoped<TodosViewModel>();
@@ -35,7 +35,7 @@ namespace SimpleBlazorTasker
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, TaskerDbContext dbContext)
     {
       if (env.IsDevelopment())
       {
@@ -55,6 +55,8 @@ namespace SimpleBlazorTasker
         endpoints.MapBlazorHub();
         endpoints.MapFallbackToPage("/_Host");
       });
+
+      dbContext.Database.Migrate();
     }
   }
 }
