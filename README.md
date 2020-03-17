@@ -25,17 +25,11 @@ You can deploy SimpleBlazorTasker using Docker containers on Windows, macOS, and
 
 *These dependencies are free to use.*
 
-### Build Docker Images
+### Build & Run Docker Images
 
 ```
 docker-compose build
-```
-
-
-### Run Docker Image
-
-```
-docker-compose run
+docker-compose up
 ```
 
 visit http://localhost:8080
